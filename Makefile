@@ -1,3 +1,5 @@
+VERSION := $(shell git describe --tags)
+
 all: dist/module.json dist/lang/en.json dist/dynamic-token-scale.js
 
 package: module.zip
@@ -18,7 +20,7 @@ dist/lang: | dist
 
 
 dist/module.json: static/module.json | dist
-	cp static/module.json dist
+	sed 's/@VERSION@/$(VERSION)/' $< > $@
 
 dist/lang/%: static/lang/% | dist/lang
 	cp $< $@
