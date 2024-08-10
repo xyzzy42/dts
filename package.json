@@ -4,7 +4,8 @@
   "description": "Allow Dynamic and/or Static tokens to be dynamically scaled to match sizes",
   "main": "src/dynamic-token-scale.js",
   "scripts": {
-    "build": "make package"
+    "build": "make package",
+    "format": "prettier --write src static"
   },
   "repository": {
     "type": "git",
