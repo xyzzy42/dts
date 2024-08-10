@@ -1,0 +1,24 @@
+{
+  "name": "dynamic-token-scale",
+  "version": "0.1.0",
+  "description": "Allow Dynamic and/or Static tokens to be dynamically scaled to match sizes",
+  "main": "src/dynamic-token-scale.js",
+  "scripts": {
+    "build": "make package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xyzzy42/dts.git"
+  },
+  "author": "Trent Piepho",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/xyzzy42/dts/issues"
+  },
+  "homepage": "https://github.com/xyzzy42/dts#readme",
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "pretty": "^2.0.0",
+    "rollup": "^4.20.0"
+  }
+}
