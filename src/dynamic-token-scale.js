@@ -125,6 +125,9 @@ Hooks.once("canvasInit", () => {
                 if (asset.includes("-bkg")) continue;
                 const assetTexture = PIXI.Assets.cache.get(asset);
                 const sprite = new PIXI.Sprite(assetTexture);
+                sprite.anchor.set(0, 0);
+                const texture = PIXI.RenderTexture.create({ width: assetTexture.width, height: assetTexture.height });
+                canvas.app.renderer.render(sprite, { renderTexture: texture });
                 const border = ((s, image) => {
                     for (let m = 0; m < Math.min(s.width, s.height) / 2; m++) {
                         for (let i = m; i < s.width - m; i++) {
@@ -135,8 +138,9 @@ Hooks.once("canvasInit", () => {
                         }
                     }
                     return null;
-                })(sprite, canvas.app.renderer.extract.pixels(sprite));
+                })(sprite, canvas.app.renderer.extract.pixels(texture));
                 sprite.destroy();
+                texture.destroy();
                 const side = border?.side === "V" ? assetTexture.height : assetTexture.width;
                 this.#ringDataScale.set(asset, !border ? 1.0 : side / (side - 2 * border.border));
             }
