@@ -58,6 +58,20 @@ function _refreshSize() {
     if (this.hasDynamicRing) this.ring.configureSize();
 }
 
+function updateCanvasScale() {
+    const dsMode = game.settings.get(MODULENAME, "dynamicScalingMode");
+    if (dsMode === "OD100") {
+        game.canvas.tokens.dynamicFullScale = true;
+        game.canvas.tokens.staticMatchScale = false;
+    } else if (dsMode === "ID66") {
+        game.canvas.tokens.dynamicFullScale = false;
+        game.canvas.tokens.staticMatchScale = true;
+    } else {
+        game.canvas.tokens.dynamicFullScale = false;
+        game.canvas.tokens.staticMatchScale = false;
+    }
+}
+
 Hooks.once("init", () => {
     console.info(`${MODULENAME} | Initializing`);
 
@@ -68,11 +82,32 @@ Hooks.once("init", () => {
     Object.defineProperty(Token.prototype, "_tokenScale", { value: _tokenScale });
     Object.defineProperty(Token.prototype, "_refreshMesh", { value: _refreshMesh });
     Object.defineProperty(Token.prototype, "_refreshSize", { value: _refreshSize });
+
+    game.settings.register(MODULENAME, "dynamicScalingMode", {
+        name: game.i18n.localize(`${MODULENAME}.setting.name`),
+        hint: game.i18n.localize(`${MODULENAME}.setting.hint`),
+        scope: "client",
+        config: true,
+        requiresReload: false,
+        type: String,
+        choices: {
+            none: game.i18n.localize(`${MODULENAME}.setting.none`),
+            OD100: game.i18n.localize(`${MODULENAME}.setting.OD100`),
+            ID66: game.i18n.localize(`${MODULENAME}.setting.ID66`),
+        },
+        default: "none",
+        onChange: () => {
+            updateCanvasScale();
+            game.canvas.tokens.refreshTokensSize();
+        },
     });
 });
 
 Hooks.once("canvasInit", () => {
     console.info(`${MODULENAME} | canvasInit`);
+
+    // Load settings into TokenLayer
+    updateCanvasScale();
 
     const TokenRing = CONFIG.Token.ring.ringClass;
     class ScaledTokenRing extends TokenRing {

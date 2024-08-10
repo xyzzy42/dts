@@ -1,5 +1,11 @@
 {
-  "dynamic-token-scale": {
-	"fullsize": "Scale to full size"
-  }
+    "dynamic-token-scale": {
+        "setting": {
+            "name": "Token Scaling Mode",
+            "hint": "Applies a dynamic scaling to tokens.  In an attempt to match the size of dynamic ring tokens to static ring tokens, or vice versa.",
+            "none": "No dynamic scaling of tokens",
+            "OD100": "Dynamic tokens scaled so ring outer diameter fills grid",
+            "ID66": "Static tokens scaled so the ring outer diameter matches dynamic token ring"
+        }
+    }
 }
