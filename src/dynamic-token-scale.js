@@ -2,7 +2,7 @@ const MODULENAME = "dynamic-token-scale";
 
 // Methods for TokenLayer
 function refreshTokensSize() {
-    this.ownedTokens.forEach((t) => t._refreshSize());
+    this.placeables.forEach((t) => t._refreshSize());
 }
 
 // Methods for Token
