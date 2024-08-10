@@ -75,8 +75,8 @@ function updateCanvasScale() {
 Hooks.once("init", () => {
     console.info(`${MODULENAME} | Initializing`);
 
-    Object.defineProperty(TokenLayer.prototype, "dynamicFullScale", { value: false });
-    Object.defineProperty(TokenLayer.prototype, "dynamicMatchScale", { value: false });
+    Object.defineProperty(TokenLayer.prototype, "dynamicFullScale", { value: false, writable: true });
+    Object.defineProperty(TokenLayer.prototype, "dynamicMatchScale", { value: false, writable: true });
     Object.defineProperty(TokenLayer.prototype, "refreshTokensSize", { value: refreshTokensSize });
 
     Object.defineProperty(Token.prototype, "_tokenScale", { value: _tokenScale });
