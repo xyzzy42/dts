@@ -1,5 +1,5 @@
 {
-    "dynamic-token-scale": {
+    "dynamic-token-scaling": {
         "setting": {
             "name": "Token Scaling Mode",
             "hint": "Applies a dynamic scaling to tokens.  In an attempt to match the size of dynamic ring tokens to static ring tokens, or vice versa.",

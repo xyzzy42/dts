@@ -1,4 +1,4 @@
-const MODULENAME = "dynamic-token-scale";
+const MODULENAME = "dynamic-token-scaling";
 
 // Methods for TokenLayer
 function refreshTokensSize() {

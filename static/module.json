@@ -1,5 +1,5 @@
 {
-    "id": "dynamic-token-scale",
+    "id": "dynamic-token-scaling",
     "title": "Dynamic Token Scaling",
     "description": "Allow Dynamic and/or Static tokens to be dynamically scaled to match sizes",
     "version": "@VERSION@",
