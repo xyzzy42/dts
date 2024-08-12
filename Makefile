@@ -26,4 +26,4 @@ dist/lang/%: static/lang/% | dist/lang
 	cp $< $@
 
 dist/dynamic-token-scale.js: src/dynamic-token-scale.js | dist
-	npx rollup $< --file $@ --format es
+	npx rollup $< --file $@ --format es --generatedCode es2015
